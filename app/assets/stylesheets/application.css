@@ -35,10 +35,18 @@ body .container .jumbotron {
 }
 
 .video select {
-  width: 200px;
+  width: 300px;
 }
 
 .video #media-container {
   margin: auto;
   margin-top: 20px;
+}
+
+.video .buttons {
+  display: none;
+}
+
+.video img.loading-indicator {
+  display: none;
 }

@@ -5,8 +5,15 @@
   <span>Select client</span>
   <%= collection_select(:name, :id, @clients, :id, :name, {:include_blank => true }) %>
 
-  <div id="media-container"></div>
+  <div class="media-wrapper">
+    <div id="media-container"></div>
+  </div>
 
+  <div class="buttons">
+    <button id="recordButton" class="btn btn-primary">Record</button>
+    <button id="stopButton" class="btn btn-warning">Stop</button>
+    <img class="loading-indicator" src="ajax-loader.gif"></img>
+  </div>
 </div>
 
 <br>
@@ -14,6 +21,7 @@
 <script type="text/javascript">
   $(function() {
     $(".video select").change(function(e){
+      $('.buttons').hide();
       $.get("clients/"+this.value+".json", function(data){
         if(data.video){
           jwplayer("media-container").setup({
@@ -22,7 +30,38 @@
               file: data.video.url
           });
         } else {
+          var clientId = data.id;
+          $("#media-container").scriptcam({ 
+            width: 640,
+            height: 480,
+            fileName: 'uservideo',
+            connected: function(){
+              $('.buttons').show();
+              $("#recordButton").removeClass("disabled");
+              $("#stopButton").removeClass("disabled");
+            },
+            fileConversionStarted: function(data){
+               $('.loading-indicator').show();
+            },
+            fileReady: function(fileUrl){
+              $.ajax({ url: "videos.json", type: 'POST',
+                beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+                data: {video: {client_id: clientId, url: fileUrl}},
+                success: function(response) { 
+                  $('.loading-indicator').hide(); 
+                }
+              });
+            }
+          });
 
+          $("#recordButton").click(function(){
+            $(this).addClass("disabled");
+            $.scriptcam.startRecording();
+          });
+          $("#stopButton").click(function(){
+            $(this).addClass("disabled");
+            $.scriptcam.closeCamera();
+          });
         }
       });
     });
