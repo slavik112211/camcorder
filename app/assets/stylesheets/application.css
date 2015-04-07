@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+body .container .jumbotron {
+  padding-top: 1px;
+}
+
+.table-wrapper {
+  width: auto;
+  background-color: #ffffff;
+  padding: 1.1%;
+  border-radius: 4px;
+}
