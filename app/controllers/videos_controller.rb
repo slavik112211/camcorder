@@ -4,21 +4,13 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    # @videos = Video.all
+    @clients = Client.includes(:video)
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
-  end
-
-  # GET /videos/new
-  def new
-    @video = Video.new
-  end
-
-  # GET /videos/1/edit
-  def edit
   end
 
   # POST /videos
@@ -34,30 +26,6 @@ class VideosController < ApplicationController
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /videos/1
-  # PATCH/PUT /videos/1.json
-  def update
-    respond_to do |format|
-      if @video.update(video_params)
-        format.html { redirect_to @video, notice: 'Video was successfully updated.' }
-        format.json { render :show, status: :ok, location: @video }
-      else
-        format.html { render :edit }
-        format.json { render json: @video.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /videos/1
-  # DELETE /videos/1.json
-  def destroy
-    @video.destroy
-    respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

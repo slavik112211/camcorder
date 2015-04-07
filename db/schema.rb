@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407072627) do
+ActiveRecord::Schema.define(version: 20150407094443) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150407072627) do
     t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "thumbnail"
   end
 
   add_index "videos", ["client_id"], name: "index_videos_on_client_id"

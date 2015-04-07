@@ -1,29 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Videos</h1>
+<h1>Videos</h1>
+<div class="content-wrapper video">
+  <span>Select client</span>
+  <%= collection_select(:name, :id, @clients, :id, :name, {:include_blank => true }) %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Url</th>
-      <th>Client</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div id="media-container"></div>
 
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.url %></td>
-        <td><%= video.client %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
 <br>
 
-<%= link_to 'New Video', new_video_path %>
+<script type="text/javascript">
+  $(function() {
+    $(".video select").change(function(e){
+      $.get("clients/"+this.value+".json", function(data){
+        if(data.video){
+          jwplayer("media-container").setup({
+              width: "600px",
+              image: data.video.thumbnail,
+              file: data.video.url
+          });
+        } else {
+
+        }
+      });
+    });
+  });
+</script>

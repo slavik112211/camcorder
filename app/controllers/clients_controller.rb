@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:edit, :update, :destroy]
 
   # GET /clients
   # GET /clients.json
@@ -10,6 +10,11 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @client = Client.includes(:video).find(params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @client.as_json(include: :video) }
+    end
   end
 
   # GET /clients/new
