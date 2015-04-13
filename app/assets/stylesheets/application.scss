@@ -10,9 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "scaffolds";
+@import "clients";
+@import "videos";
 
 body {
   padding-top: 20px;
@@ -32,21 +36,4 @@ body .container .jumbotron {
   background-color: #ffffff;
   padding: 1.1%;
   border-radius: 4px;
-}
-
-.video select {
-  width: 300px;
-}
-
-.video #media-container {
-  margin: auto;
-  margin-top: 20px;
-}
-
-.video .buttons {
-  display: none;
-}
-
-.video img.loading-indicator {
-  display: none;
 }

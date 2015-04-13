@@ -4,22 +4,11 @@
   <title>Camcorder</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-
-  <script src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
-  <%= javascript_include_tag 'scriptcam.min' %>
-
   <script src="http://jwpsrv.com/library/vr8MHt0HEeSwZAp+lcGdIw.js"></script>
-
+  <script src="https://cdn.webrtc-experiment.com/MediaStreamRecorder.js"> </script>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 
 <div class="container">
 
@@ -45,15 +34,6 @@
   </div>
 
 </div>
-
-<script type="text/javascript">
-  $(function() {
-    var controllerName = "<%= controller.controller_name %>";
-    $("nav ul.nav li").each(function(index){
-      if($(this).data("controller") == controllerName) $(this).addClass("active");
-    });
-  });
-</script>
 
 </body>
 </html>

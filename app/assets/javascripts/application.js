@@ -12,5 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+var cameraStream;
+
+$(document).on('ready page:load', function() {
+  if(cameraStream) cameraStream.stop();
+  
+  var controllerName = "<%= controller.controller_name %>";
+  $("nav ul.nav li").each(function(index){
+    if($(this).data("controller") == controllerName) $(this).addClass("active");
+  });
+});
