@@ -25,6 +25,6 @@ module Camcorder
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.paths << "#{Rails.root}/vendor/ScriptCam-master"
+    config.action_controller.permit_all_parameters = true
   end
 end

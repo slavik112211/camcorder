@@ -1,5 +1,19 @@
-<h1>New Client</h1>
+<div class="content-wrapper">
 
-<%= render 'form' %>
+  <div class="notice">* These fields are mandatory</div>
 
-<%= link_to 'Back', clients_path %>
+  <%= render 'form' %>
+
+  <div class="disclaimer">
+    By submitting this form, I agree to receive communications, including emails, from
+    <i>Cirque du Soleil</i> about news, events, offers, contests, other promotions, invitations and
+    surveys regarding <i>Cirque du Soleil</i>, its affiliates, partners and One Drop's activities, services
+    and products. You may unsubscribe or modify your preferences at any time. Please refer to
+    our <a href="#">Privacy Policy</a> or <a href="#">contact us</a> for more details.
+  </div>
+
+  <div class="table-footer">
+    <%= link_to 'Back to list', clients_path, {class: 'bigBtn'} %>
+  </div>
+
+</div>

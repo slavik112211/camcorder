@@ -1,3 +1,133 @@
 // Place all the styles related to the clients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.clients {
+  display: table;
+  border-color: gray;
+
+  thead {
+    text-transform: uppercase;
+    background-color: #fff;
+    color: #000;
+    th {
+        //background-image: url(/table-row-bg.jpg);
+        //background-size: 200%;
+        //background-repeat-x: no-repeat;
+    }
+  }
+
+  tbody{
+    color: #fff;
+    tr {
+      border-bottom: 1px solid #a29b96;
+    }
+  }
+  margin-left: auto;
+  margin-right: auto;
+}
+
+a.bigBtn {
+  background: #fff url(/tealBtn_tl.png);
+  line-height: 20px;
+  border-radius: 4px;
+  padding: 0 10px;
+  border: 1px solid #8a8a8a;
+  color: #3B342F;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.table-footer {
+  position: absolute;
+  bottom: 29px;
+}
+
+a.new-client {
+  bottom: 35px;
+}
+
+nav.pagination {
+  margin-left: 30px;
+  color: #fff;
+  margin-top: 0px;
+  margin-bottom: 0px;
+
+  a {
+    color: #fff !important;
+    &:hover { background-color: inherit; }
+  }
+}
+
+.clients.new, .clients.edit, .clients.create, .clients.update, {
+  .field_with_errors {
+    width: 100%;
+  }
+  #error_explanation {
+    width: 100%;
+    padding: 0px;
+    line-height: 30px;
+    font-size: 16px;
+    .error-message {
+      background-color: lightgrey;
+      margin-left: 5px;
+      margin-right: 5px;
+      padding-right: 5px;
+      padding-right: 5px;
+    }
+  }
+  input[type="text"], input[type="email"] {
+    width: 100%;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 5px;
+    line-height: 1.6em;
+  }
+  .content-wrapper {
+    padding-top: 35px;
+    .notice {
+      color: #fff;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+  }
+  .row {
+    margin-bottom: 25px;
+  }
+  .actions {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  input[type="submit"] {
+    border-radius: 10px;
+    border: 1px solid #8a8a8a;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    height: 60px;
+    width: 200px;
+  }
+  .disclaimer {
+    color: #fff;
+    font-size: 14px;
+    position: absolute;
+    bottom: 65px;
+    width: 750px;
+    a {
+      color: #4e98bd;
+      &:hover { background-color: inherit; }
+    }
+  }
+}
+
+body.clients.new, body.clients.edit, body.clients.create, body.clients.update {
+  background-position: center -80px;
+  padding-top: 230px;
+  .site-footer {
+    padding-top: 10px;
+  }
+}

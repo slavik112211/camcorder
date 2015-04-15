@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :videos
-  resources :clients
+  resources :clients do
+    member do
+      get 'camcorder'
+    end
+  end
   root 'application#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

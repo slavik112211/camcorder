@@ -1,25 +1,33 @@
 <%= form_for(@client) do |f| %>
   <% if @client.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@client.errors.count, "error") %> prohibited this client from being saved:</h2>
-
-      <ul>
       <% @client.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <span class="error-message"><%= message %></span>
       <% end %>
-      </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.text_field :first_name, :placeholder => "First name *" %>
+    </div>
+    <div class="col-md-6">
+      <%= f.text_field :last_name, :placeholder => "Last name *" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.email_field :email, :placeholder => "E-mail *" %>
+    </div>
   </div>
+<!--   <div class="row">
+    <div class="col-md-12">
+      <%= f.email_field :email, :placeholder => "Confirm E-mail *" %>
+    </div>
+  </div> -->
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit (action_name=="new" ? "Submit" : "Update") %>
   </div>
 <% end %>

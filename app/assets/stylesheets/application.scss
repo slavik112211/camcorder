@@ -19,21 +19,36 @@
 @import "videos";
 
 body {
-  padding-top: 20px;
+  padding-top: 350px;
   padding-bottom: 20px;
+  background-image: url("/contentPage_bg.jpg");
+  background-repeat: repeat-x;
+  background-position: center 0px;
+  font-family: 'Open Sans', sans-serif;
+  height: 100%;
 }
 
-.navbar {
-  margin-bottom: 20px;
-}
-
-body .container .jumbotron {
-  padding-top: 1px;
+.container {
+  width: 820px;
+  padding-left: 0px;
+  padding-right: 0px;
+  min-height: 100%;
+  position: relative;
 }
 
 .content-wrapper {
-  width: auto;
-  background-color: #ffffff;
-  padding: 1.1%;
-  border-radius: 4px;
+  width: 820px;
+  height: 497px;
+  background-image: url("/media-wall-bg.jpg");
+  padding: 4%;
+  position: relative;
+  padding-top: 25px;
+}
+
+.site-footer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  height: 20px;
+  padding-top: 50px;
 }

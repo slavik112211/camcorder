@@ -1,6 +1,9 @@
-<h1>Editing Client</h1>
+<div class="content-wrapper">
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+  <div class="table-footer">
+    <%= link_to 'Back', clients_path, {class: 'bigBtn new-client'} %>
+  </div>
+
+</div>

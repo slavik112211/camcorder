@@ -4,17 +4,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
-  end
-
-  # GET /clients/1
-  # GET /clients/1.json
-  def show
-    @client = Client.includes(:video).find(params[:id])
-    respond_to do |format|
-      format.html { render :show }
-      format.json { render json: @client.as_json(include: :video) }
-    end
+    @clients = Client.all.order('created_at DESC').page params[:page]
   end
 
   # GET /clients/new
@@ -29,15 +19,15 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(client_params)
+    # client_params = ActionController::Parameters.new(params)
+    # client_params = client_params.permit(:first_name, :last_name, :email)
+    @client = Client.new(params[:client])
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
+        format.html { redirect_to action: :new, notice: 'Client was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,6 +54,10 @@ class ClientsController < ApplicationController
       format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def camcorder
+
   end
 
   private
